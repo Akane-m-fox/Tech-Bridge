@@ -1,0 +1,657 @@
+/* style.css */
+
+/* --- Common Styles --- */
+:root {
+    --primary-color: #007BFF; /* 青 */
+    --secondary-color: #1D2134; /* ネイビー */
+    --accent-color: #007BFF; /* アクセント */
+    --text-color: #333;
+    --bg-color: #fff;
+    --light-bg-color: #f4f4f4;
+    --container-width: 1200px;
+    --base-padding: 20px;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--base-padding);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* リッチな影を標準で追加 */
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px); /* マウスオーバーで少し上に浮き上がる */
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* 影を広げて立体感を出す */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* 全体的に画像を少し丸くして柔らかい印象に */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08); /* 画像にリッチな影を追加 */
+}
+
+/* --- Header --- */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 画像とテキストの間に少し隙間を空ける */
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    border-radius: 0; /* ベース画像設定の角丸を打ち消す */
+    box-shadow: none; /* ベース画像設定の影を打ち消す */
+}
+
+.company-name {
+    font-size: 1.4em;
+    font-weight: 900;
+    color: var(--secondary-color);
+    letter-spacing: 1px; /* 文字の間隔を少し開けてモダンに */
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    border-radius: 25px; /* 完全な角丸（ピル型）に */
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.nav-btn-register {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* リッチな影を追加 */
+}
+
+.nav-btn-register:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* マウスオーバーで少し浮く */
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+}
+
+.nav-btn-login {
+    background-color: transparent;
+    border: 2px solid var(--primary-color); /* 色をテーマカラーの青に統一 */
+    color: var(--primary-color);
+    margin-left: 10px;
+}
+
+.nav-btn-login:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px); /* マウスオーバーで少し浮く */
+}
+
+/* --- Hero --- */
+.hero {
+    position: relative;
+    padding: 160px 0 220px; /* フルスクリーン感が出るように上下余白を拡大 */
+    background-image: url('images/image_1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* スクロール時に背景が固定されるパララックス効果 */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* 下部をスタイリッシュに斜めカット */
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* ネイビーから青へのグラデーションを透過して重ねる */
+    background: linear-gradient(135deg, rgba(29, 33, 52, 0.9) 0%, rgba(0, 123, 255, 0.6) 100%);
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2; /* グラデーションの上にテキストを配置 */
+}
+
+.hero-content {
+    max-width: 650px;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* --- Problem --- */
+.problem {
+    padding: 80px 0;
+    background-color: var(--light-bg-color);
+}
+
+.problem h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 50px;
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.problem-card {
+    position: relative;
+    background-color: #fff;
+    padding: 30px var(--base-padding);
+    border-radius: 12px;
+    border: none;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 吹き出しのしっぽを追加 */
+.problem-card::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 15px 15px 0;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+.problem-card h3 {
+    font-size: 1.1em;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.icon-placeholder {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 123, 255, 0.1);
+    color: var(--primary-color);
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* --- Reason --- */
+.reason {
+    padding: 80px 0;
+}
+
+.reason h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 50px;
+}
+
+.reason-band {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.reason-band-reverse {
+    flex-direction: row-reverse;
+}
+
+.reason-image-placeholder {
+    flex: 1;
+    text-align: center;
+}
+
+.reason-text {
+    flex: 1;
+    padding: 0 40px;
+}
+
+.reason-text h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* --- Flow --- */
+.flow {
+    padding: 80px 0;
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.flow h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.flow-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative; /* 線の基準 */
+}
+
+/* PC用の繋ぎ線（タイムライン） */
+.flow-steps::before {
+    content: '';
+    position: absolute;
+    top: 29px; /* 丸の中心の高さ */
+    left: 10%;
+    right: 10%;
+    border-top: 2px dashed rgba(255, 255, 255, 0.4); /* 点線 */
+    z-index: 1;
+}
+
+.flow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    position: relative;
+    z-index: 2; /* 繋ぎ線より上に表示 */
+}
+
+.flow-step {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.flow-step-text {
+    font-weight: bold;
+}
+
+/* --- FAQ --- */
+.faq {
+    padding: 80px 0;
+    background-color: var(--light-bg-color);
+}
+
+.faq h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 50px;
+}
+
+.faq-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px var(--base-padding);
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none; /* デフォルトの矢印を消す */
+    position: relative;
+}
+
+.faq-answer {
+    padding: 0 20px 20px;
+    color: #555;
+}
+
+/* --- Final CTA --- */
+.final-cta {
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.final-cta h2 {
+    color: var(--secondary-color);
+    font-size: 2.2em;
+    margin-bottom: 40px;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 60px 0 30px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.footer-nav a {
+    color: #555;
+    font-weight: bold;
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+}
+
+.footer-copy {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* --- Projects (案件例) --- */
+.projects {
+    padding: 80px 0;
+    background-color: #fff;
+}
+.projects h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 50px;
+}
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.project-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+.project-tags {
+    margin-bottom: 15px;
+}
+.tag {
+    display: inline-block;
+    background-color: #e6f2ff;
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.project-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+    line-height: 1.4;
+}
+.project-details p {
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* --- Testimonial (利用者の声) --- */
+.testimonial {
+    padding: 80px 0;
+    background-color: var(--light-bg-color);
+}
+.testimonial h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 50px;
+}
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+.testimonial-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.user-icon {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+.user-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像が歪まないようにする */
+    border-radius: 50%; /* 完全な円にする */
+    box-shadow: none; /* アイコンの影は消す */
+}
+.user-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+}
+.before-after {
+    margin: 0;
+    font-size: 0.9em;
+    color: #d32f2f; /* 赤系で強調 */
+}
+.user-voice {
+    background-color: #f0f4f8; /* 薄い青みがかったグレー背景 */
+    padding: 20px;
+    border-radius: 8px;
+    color: #333;
+    line-height: 1.6;
+    position: relative;
+    margin: 0;
+}
+.user-voice::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 30px; /* アイコンの下あたりから吹き出しのしっぽを出す */
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent #f0f4f8 transparent;
+}
+
+/* --- Responsive (PC to Tablet) --- */
+@media (max-width: 992px) {
+    .hero-container, .reason-band, .reason-band-reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .reason-image-placeholder, .reason-text {
+        text-align: center;
+        padding: 0;
+    }
+    .reason-image-placeholder {
+        margin-bottom: 30px;
+    }
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* タブレット・PC時：真ん中の悩みカードだけ少し下げてリズムを出す */
+    .problem-card:nth-child(2) {
+        transform: translateY(30px);
+    }
+}
+
+@media (max-width: 768px) {
+    /* 余白をスマホ向けに縮小 */
+    .problem, .reason, .projects, .testimonial, .flow, .faq, .final-cta {
+        padding: 50px 0;
+    }
+
+    .hero {
+        padding: 120px 0 150px;
+        clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); /* スマホでは斜めの角度を少し緩やかに */
+    }
+
+    /* ヘッダーの調整（横幅に収まるように） */
+    .logo img {
+        height: 30px;
+    }
+    .company-name {
+        font-size: 1.1em;
+    }
+    .nav-btn {
+        font-size: 0.75em;
+        padding: 8px 12px;
+    }
+    .nav-btn-login {
+        margin-left: 5px;
+    }
+
+    /* グリッドを縦1列に */
+    .problem-grid, .project-grid, .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* フォントサイズの最適化 */
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .reason-text h3 {
+        font-size: 1.5em;
+    }
+    .final-cta h2 {
+        font-size: 1.5em;
+    }
+
+    /* ご利用の流れを縦並びに */
+    .flow-steps {
+        flex-direction: column;
+        gap: 20px;
+        position: relative;
+    }
+    /* スマホ用の繋ぎ線（縦のタイムライン） */
+    .flow-steps::before {
+        top: 30px;
+        bottom: 30px;
+        left: 44px; /* 丸の中心位置に合わせる */
+        right: auto;
+        border-top: none;
+        border-left: 2px dashed rgba(255, 255, 255, 0.4);
+    }
+    .flow-item {
+        flex-direction: row;
+        width: 100%;
+        background: rgba(255,255,255,0.1); /* 少しリッチな背景 */
+        padding: 15px;
+        border-radius: 8px;
+        backdrop-filter: blur(5px);
+    }
+    .flow-step {
+        margin-bottom: 0;
+        margin-right: 20px;
+        flex-shrink: 0; /* 画面が狭くても丸が潰れないようにする */
+    }
+
+    /* CTAボタンをタップしやすくフル幅に */
+    .cta-button {
+        display: block;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* フッターのスマホ対応 */
+    .footer-nav {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
