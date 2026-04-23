@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/logo.jpg">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* スマホ向け改行崩れ防止用のスタイル */
+        @media (max-width: 768px) {
+            .br-pc { display: none; } /* PC用の改行をスマホで非表示にする */
+        }
+        .text-wrap {
+            display: inline-block; /* 意図しない単語の途中での改行を防ぐ */
+        }
+    </style>
 </head>
 <body>
 
@@ -193,9 +202,9 @@
             <div class="faq-list">
                 <!-- detailsタグを使うことで、JS不要で開閉可能なアコーディオンになります -->
                 <details class="faq-item" data-aos="fade-up" data-aos-delay="100">
-                    <summary class="faq-question">Q. フリーランス未経験でも登録できますか？</summary>
+                    <summary class="faq-question"><span class="text-wrap">Q. フリーランス未経験でも</span><span class="text-wrap">登録できますか？</span></summary>
                     <div class="faq-answer">
-                        <p>A. はい、可能です。独立に向けたサポートから初めての案件獲得まで伴走いたします。</p>
+                        <p><span class="text-wrap">A. はい、可能です。</span><span class="text-wrap">独立に向けたサポートから</span><span class="text-wrap">初めての案件獲得まで伴走いたします。</span></p>
                     </div>
                 </details>
             </div>
@@ -204,7 +213,7 @@
 
     <section class="final-cta">
         <div class="container" data-aos="fade-up" data-aos-duration="1200">
-            <h2>まずは情報収集からでも歓迎です。<br>お気軽にご登録ください。</h2>
+            <h2><span class="text-wrap">まずは情報収集からでも歓迎です。</span><br class="br-pc"><span class="text-wrap">お気軽にご登録ください。</span></h2>
             <a href="#" class="cta-button">無料でキャリア相談をする</a>
         </div>
     </section>
