@@ -559,6 +559,7 @@ header {
     margin-right: 20px;
     font-size: 2em;
     flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* アイコンのアニメーション設定 */
 }
 .tech-category h4 {
     font-size: 1.4em;
@@ -624,22 +625,37 @@ header {
     position: relative;
     z-index: 2;
 }
+/* AOSアニメーションとz-indexを管理する親要素 */
+.strength-aos {
+    position: relative;
+    z-index: 1; /* 通常時 */
+}
+/* ホバー時はAOSの親要素ごと最前面に出す（これで重なりバグを完全解消） */
+.strength-aos:hover {
+    z-index: 10;
+}
+
 .strength-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    /* すりガラスを廃止し、ソリッドなダークグラデーションに変更 */
+    background: linear-gradient(145deg, rgba(30, 36, 61, 0.95) 0%, rgba(21, 25, 43, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05); /* うっすらとした上品な枠線 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     border-radius: 16px;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: transform 0.3s ease, background 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    height: 100%;
+    box-sizing: border-box;
+    will-change: transform;
 }
-.strength-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.1);
+.strength-aos:hover .strength-card {
+    transform: translateY(-15px) scale(1.1); /* 拡大率は少し抑えめにして上品に */
+    background: linear-gradient(145deg, rgba(36, 43, 71, 0.95) 0%, rgba(26, 31, 53, 0.95) 100%);
+    border-color: rgba(0, 210, 255, 0.5); /* ホバー時に枠線が水色に光る！ */
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.3), 0 20px 40px rgba(0,0,0,0.5); /* 外側へもネオンのように発光させる */
 }
 .strength-label {
     font-size: 1.1em;
@@ -656,6 +672,11 @@ header {
     -webkit-text-fill-color: transparent;
     margin: 0;
     line-height: 1;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 数字自体のアニメーション用 */
+}
+/* カードにホバーした際、中の数字も連動して少し手前に飛び出させる */
+.strength-aos:hover .strength-value {
+    transform: scale(1.15); /* カードの拡大に合わせて数字もさらに大きく */
 }
 .strength-value span {
     font-size: 0.35em;
@@ -797,12 +818,13 @@ header {
     border-radius: 12px;
     padding: 30px;
     flex-grow: 1;
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; /* 影のアニメーションも滑らかに追加 */
 }
 
 .flow-timeline-content:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.03); /* 横幅がある要素なので、少し控えめに1.03倍に拡大 */
     background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* 浮き上がり感に合わせて影を追加 */
 }
 
 .flow-timeline-content h3 {
@@ -861,6 +883,12 @@ header {
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.faq-item:hover {
+    transform: translateY(-3px); /* 少しだけ浮き上がる */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* 影を追加 */
+    border-color: var(--primary-color); /* 枠線を青にハイライト */
 }
 
 .faq-question {
@@ -872,6 +900,10 @@ header {
     list-style: none; /* デフォルトの矢印を消す */
     position: relative; /* アイコン配置の基準 */
     padding-right: 50px; /* アイコン分のスペースを確保 */
+    transition: color 0.3s ease;
+}
+.faq-item:hover .faq-question {
+    color: var(--primary-color); /* ホバー時にテキストも青くする */
 }
 
 .faq-question::-webkit-details-marker {
@@ -991,9 +1023,9 @@ footer {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .project-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-10px) scale(1.03); /* より大きく手前に来るように調整 */
     border-color: var(--primary-color); /* マウスオーバーで枠線が青く光る */
-    box-shadow: 0 12px 30px rgba(0, 123, 255, 0.12);
+    box-shadow: 0 15px 35px rgba(0, 123, 255, 0.2); /* 影も強調 */
 }
 .project-tags {
     margin-bottom: 15px;
@@ -1039,6 +1071,11 @@ footer {
     border-radius: 8px;
     border-left: 5px solid var(--primary-color);
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+    transform: translateY(-8px); /* カードがフワッと浮き上がる */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 .user-profile {
     display: flex;
@@ -1057,6 +1094,10 @@ footer {
     object-fit: cover; /* 画像が歪まないようにする */
     border-radius: 50%; /* 完全な円にする */
     box-shadow: none; /* アイコンの影は消す */
+    transition: transform 0.3s ease;
+}
+.testimonial-card:hover .user-icon img {
+    transform: scale(1.1); /* ホバー時に顔写真が少しズームされる */
 }
 .user-info h4 {
     margin: 0 0 5px 0;
