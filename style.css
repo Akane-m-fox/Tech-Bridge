@@ -173,7 +173,7 @@ header {
     position: relative;
     padding: 180px 0 250px; /* フルスクリーン感が出るように上下余白を拡大 */
     background-color: var(--secondary-color);
-    background-image: url('images/image_1.jpg');
+    background-image: url('images/image_1.jpg'), url('images/LOW/image_1.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* スクロール時に背景が固定されるパララックス効果 */
